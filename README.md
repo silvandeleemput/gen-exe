@@ -42,7 +42,7 @@ Install from PyPi using:
 
 ## Contributing
 
-Fork the solitude repository
+Fork the exe-gen repository
 
 Setup your forked repository locally as an editable installation:
 
