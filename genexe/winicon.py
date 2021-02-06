@@ -133,10 +133,12 @@ def add_icon_to_exe(source_icon_file: Path, target_exe_file: Path):
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.argument(
-    "target_exe_file", type=click.Path(dir_okay=False, file_okay=True, exists=True),
+    "target_exe_file",
+    type=click.Path(dir_okay=False, file_okay=True, exists=True),
 )
 @click.argument(
-    "source_icon_file", type=click.Path(dir_okay=False, file_okay=True, exists=True),
+    "source_icon_file",
+    type=click.Path(dir_okay=False, file_okay=True, exists=True),
 )
 def cli(target_exe_file: str, source_icon_file: str):
     """
@@ -145,7 +147,8 @@ def cli(target_exe_file: str, source_icon_file: str):
     The .exe file gets modified in place
     """
     add_icon_to_exe(
-        source_icon_file=Path(source_icon_file), target_exe_file=Path(target_exe_file)
+        source_icon_file=Path(source_icon_file),
+        target_exe_file=Path(target_exe_file),
     )
 
 

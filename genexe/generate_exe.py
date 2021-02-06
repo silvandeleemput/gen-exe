@@ -47,7 +47,9 @@ class ClickPath(click.Path):
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
-@click.argument("target", type=ClickPath(exists=False, file_okay=True, dir_okay=False))
+@click.argument(
+    "target", type=ClickPath(exists=False, file_okay=True, dir_okay=False)
+)
 @click.argument("command", type=str)
 @click.option(
     "-i",
