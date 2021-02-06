@@ -20,6 +20,7 @@ setup(
     author="S.C. van de Leemput",
     author_email="silvandeleemput@gmail.com",
     install_requires=requirements,
+    include_package_data=True,
     license="LICENSE",
     entry_points={
         "console_scripts": [
