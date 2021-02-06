@@ -86,6 +86,10 @@ Sil van de Leemput
 
 ### History
 
+##### 0.1.1 (2021-02-06)
+
+* Better documentation - updated the README.md
+
 ##### 0.1.0 (2021-02-06)
 
 * Initial release on PyPi
