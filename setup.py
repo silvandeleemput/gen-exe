@@ -31,8 +31,10 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     classifiers=[
-        "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Operating System :: Windows",
+        "Programming Language :: C++",
+        "Operating System :: Microsoft :: Windows",
+        "Intended Audience :: Developers"
     ],
 )
