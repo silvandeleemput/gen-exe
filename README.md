@@ -1,4 +1,13 @@
+# gen-exe
+
+[![GitHub workflow status: master](https://github.com/silvandeleemput/gen-exe/workflows/test-and-deploy/badge.svg?branch=master)](https://github.com/silvandeleemput/gen-exe/workflows)
+[![PyPI version](https://badge.fury.io/py/gen-exe.svg)](https://badge.fury.io/py/gen-exe) 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
 A small utility which allows you to generate Windows executables that can run custom commands on your Windows system.
+
+## Usage
 
 Custom commands can be embedded in the executables by providing a command string to the CLI, for example:
 
@@ -25,13 +34,13 @@ For other options see the help:
 
 `gen-exe --help`
 
-### Installation
+## Installation
 
 Install from PyPi using:
 
 `pip install gen-exe`
 
-### Contributing
+## Contributing
 
 Fork the solitude repository
 
@@ -45,11 +54,11 @@ $ pip install --editable ./genexe
 
 Now you can work locally and create your own pull requests.
 
-#### Maintainer
+### Maintainer
 
 Sil van de Leemput
 
-#### History
+### History
 
 ##### 0.0.1 (2021-02-06)
 
