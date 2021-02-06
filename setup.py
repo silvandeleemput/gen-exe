@@ -6,9 +6,7 @@ VERSION = "0.1.0"
 
 this_directory = path.abspath(path.dirname(__file__))
 
-with open(
-    path.join(this_directory, "README.md"), mode="r", encoding="utf-8"
-) as fh:
+with open(path.join(this_directory, "README.md"), mode="r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 with open(
@@ -23,11 +21,15 @@ setup(
     author_email="silvandeleemput@gmail.com",
     install_requires=requirements,
     license="LICENSE",
-    entry_points={"console_scripts": ["gen-exe=genexe.generate_exe:cli",
-                                      "add-ico-to-exe=genexe.winicon:cli"]},
+    entry_points={
+        "console_scripts": [
+            "gen-exe=genexe.generate_exe:cli",
+            "add-ico-to-exe=genexe.winicon:cli",
+        ]
+    },
     packages=find_packages(),
     description="A small utility which allows you to generate Windows executables "
-                "that can run custom commands on your Windows system.",
+    "that can run custom commands on your Windows system.",
     long_description_content_type="text/markdown",
     long_description=long_description,
     classifiers=[
@@ -35,6 +37,6 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: C++",
         "Operating System :: Microsoft :: Windows",
-        "Intended Audience :: Developers"
+        "Intended Audience :: Developers",
     ],
 )
