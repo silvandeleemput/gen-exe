@@ -5,7 +5,7 @@ from genexe.winicon import add_icon_to_exe
 
 
 SCRIPT_DIR = Path(__file__).parent.absolute().resolve()
-RESOURCES_DIR = SCRIPT_DIR.parent / "res"
+RESOURCES_DIR = SCRIPT_DIR / "res"
 EXE_TEMPLATE_FILE = RESOURCES_DIR / "template"
 MAX_CMD_LENGTH = 259
 
