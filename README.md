@@ -49,3 +49,8 @@ Now you can work locally and create your own pull requests.
 
 Sil van de Leemput
 
+#### History
+
+##### 0.0.1 (2021-02-06)
+
+* Initial release on PyPi
