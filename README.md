@@ -42,7 +42,7 @@ Install from PyPi using:
 
 ## Contributing
 
-Fork the exe-gen repository
+Fork the gen-exe repository
 
 Setup your forked repository locally as an editable installation:
 
