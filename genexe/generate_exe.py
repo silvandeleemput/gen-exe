@@ -8,9 +8,15 @@ SCRIPT_DIR = Path(__file__).parent.absolute().resolve()
 RESOURCES_DIR = SCRIPT_DIR / "res"
 EXE_TEMPLATE_FILE = RESOURCES_DIR / "template"
 MAX_CMD_LENGTH = 259
+REPLACE_SIGNATURE = (b"X" * MAX_CMD_LENGTH) + b"1"
 
 
-def generate_exe(target: Path, command: str, icon_file: Optional[Path] = None):
+def generate_exe(
+    target: Path,
+    command: str,
+    icon_file: Optional[Path] = None,
+    show_console: bool = True,
+):
     target = target.absolute().resolve()
     if target == EXE_TEMPLATE_FILE:
         raise RuntimeError(
@@ -24,10 +30,12 @@ def generate_exe(target: Path, command: str, icon_file: Optional[Path] = None):
         )
         command = command[:MAX_CMD_LENGTH]
     else:
-        command = command + " " * (MAX_CMD_LENGTH - len(command))
+        command = command + "\0" * (MAX_CMD_LENGTH - len(command))
     assert len(command) == MAX_CMD_LENGTH
-    byte_encoded_string = command.encode("ascii")
-    data = data.replace(b"X" * MAX_CMD_LENGTH, byte_encoded_string)
+    msg = command + ("1" if show_console else "0")
+    byte_encoded_string = msg.encode("ascii")
+    data = data.replace(REPLACE_SIGNATURE, byte_encoded_string)
+    print(f"Encode show_console : {show_console}")
     print(f"Adding following command to exe : `{command.strip()}`")
     print(f"Writing exe to: {target}")
     with open(target, "wb") as f:
@@ -57,8 +65,19 @@ class ClickPath(click.Path):
     "icon_file",
     type=ClickPath(exists=True, file_okay=True, dir_okay=False),
     default=None,
+    help="Optional icon file to embed in the executable. Default is to use no icon-file",
 )
-def cli(target: Path, command: str, icon_file: Optional[Path]):
+@click.option(
+    "-hc",
+    "--hide-console",
+    "show_console",
+    is_flag=True,
+    default=True,
+    help="Hide the executable console window. Default show the console window",
+)
+def cli(
+    target: Path, command: str, icon_file: Optional[Path], show_console: bool
+):
     """
     Generate an executable which will run the provided command on your Windows system.
 
@@ -68,7 +87,12 @@ def cli(target: Path, command: str, icon_file: Optional[Path]):
     Optionally you can provide an icon file for the executable.
     """
 
-    generate_exe(target=target, command=command, icon_file=icon_file)
+    generate_exe(
+        target=target,
+        command=command,
+        icon_file=icon_file,
+        show_console=show_console,
+    )
 
 
 if __name__ == "__main__":
