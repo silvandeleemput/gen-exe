@@ -5,6 +5,12 @@
 #include <string>
 
 
+void hide_console()
+{
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
+}
+
+
 void replace_all(std::string& str, const std::string& from, const std::string& to) {
     if (from.empty())
         return;
@@ -18,8 +24,17 @@ void replace_all(std::string& str, const std::string& from, const std::string& t
 
 int main(int argc, char** argv)
 {
+
+
     char ownPth[MAX_PATH] = "";
-    char targetPth[MAX_PATH] = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    char targetPth[MAX_PATH + 1] = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1";
+
+    // Last character in sequence is a switch for is_visible (by default true)
+    char* pp = &targetPth[0] + MAX_PATH - 1;
+    bool is_visible = pp[0] == '1';
+    pp[0] = 0;
+    if (!is_visible)
+        hide_console();
 
     std::string module_path(".\\");
 
@@ -42,5 +57,7 @@ int main(int argc, char** argv)
     for (int i = 1; i < argc; i++)
         command = command + " " + std::string(argv[i]);
 
-    return system(command.c_str());
+    int return_code = system(command.c_str());
+
+    return return_code;
 }
