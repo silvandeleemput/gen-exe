@@ -86,9 +86,13 @@ Sil van de Leemput
 
 ### History
 
+##### 0.2.1 (2021-02-08)
+
+* Added hide-console option to the executable and the CLI
+
 ##### 0.2.0 (2021-02-07)
 
-* Embedded runtimes in the executable. Executable should now work on Windows systems without VC++ redistributables installed. 
+* Embedded runtimes in the executable. Executable should now work on Windows systems without VC++ redistributables installed 
 
 ##### 0.1.1 (2021-02-06)
 
